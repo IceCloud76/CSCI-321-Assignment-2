@@ -12,10 +12,7 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate 
     @IBOutlet weak var labelTwo: UILabel!
     @IBOutlet weak var labelThree: UILabel!
     @IBOutlet weak var labelFour: UILabel!
-    @IBOutlet weak var stepperOne: UIStepper!
-    @IBOutlet weak var stepperTwo: UIStepper!
     @IBOutlet weak var myTextField: UITextField!
-    
     
     var bill_amount: CGFloat = CGFloat(0.00)
     var tip_percentage: Int = 20
@@ -33,7 +30,20 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate 
             displayError("Please enter a valid first number", textField: myTextField)
             return
         }
+        
+        print(firstNumber)
     }
+    
+    @IBAction func firstStepper(_ sender: UIStepper) {
+        print(sender.value)
+    }
+    
+    
+    @IBAction func secondStepper(_ sender: UIStepper) {
+        print(sender.value)
+    }
+    
+    
     
     
     func displayError(_ message: String, textField: UITextField) {
