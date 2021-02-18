@@ -8,11 +8,14 @@
 import UIKit
 
 class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
-    @IBOutlet weak var labelOne: UILabel!
-    @IBOutlet weak var labelTwo: UILabel!
-    @IBOutlet weak var labelThree: UILabel!
-    @IBOutlet weak var labelFour: UILabel!
     @IBOutlet weak var myTextField: UITextField!
+    @IBOutlet weak var tipLabel: UILabel!
+    @IBOutlet weak var partySizeLabel: UILabel!
+    @IBOutlet weak var totalBillLabel: UILabel!
+    @IBOutlet weak var yourShareLabel: UILabel!
+    
+    
+    
     
     var bill_amount: CGFloat = CGFloat(0.00)
     var tip_percentage: Int = 20

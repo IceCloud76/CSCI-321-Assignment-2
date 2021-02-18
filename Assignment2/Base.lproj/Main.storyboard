@@ -136,7 +136,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="YourShareLabel" destination="2lM-C7-jIE" id="INr-at-WoT"/>
                         <outlet property="myTextField" destination="QdO-B0-14F" id="HJi-5I-F4b"/>
+                        <outlet property="partySizeLabel" destination="iZd-kd-iri" id="UM5-gw-4KC"/>
+                        <outlet property="tipLabel" destination="YsX-K0-k23" id="5kq-o3-tIM"/>
+                        <outlet property="totalBillLabel" destination="6Y6-Bf-54l" id="8op-NA-xXD"/>
+                        <outlet property="yourShareLabel" destination="2lM-C7-jIE" id="wYv-UP-saJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
