@@ -28,7 +28,7 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate 
     }
 
     @IBAction func calcButtonPressed(_ sender: UIButton) {
-            guard let firstNumberString = myTextField.text, !firstNumberString.isEmpty, let firstNumber = Int(firstNumberString) else {
+            guard let firstNumberString = myTextField.text, !firstNumberString.isEmpty, let firstNumber = Double(firstNumberString) else {
             // print("Error - invalid first number")
             displayError("Please enter a valid first number", textField: myTextField)
             return
@@ -50,8 +50,10 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate 
         partySizeLabel.text = "\(formattedValue)"
     }
     
-    
-    
+   
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     
     func displayError(_ message: String, textField: UITextField) {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
