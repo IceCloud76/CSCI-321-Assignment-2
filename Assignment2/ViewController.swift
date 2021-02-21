@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Assignment2
 //
-//  Created by Eric Kirchman Z1864126 Dan Hafford Z1863444	 on 2/17/21.
+//  Created by Eric Kirchman Z1864126 Dan Hafford Z1863444 on 2/17/21.
 //
 
 import UIKit
@@ -39,8 +39,48 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate 
         }
         
         print("Bill amount: \(firstNumber)") //print statements are for debugging
-        
         bill_amount = CGFloat(firstNumber)
+        
+        calculate()
+        
+        myTextField.resignFirstResponder()
+    }
+    
+    @IBAction func firstStepper(_ sender: UIStepper) {
+        print(sender.value) //print statements are for debugging
+        let formattedValue = String(format: "%.0f", sender.value) //format the number with no decimals
+        tipLabel.text = "\(formattedValue)%" //set the label
+        tip_percentage = Int(sender.value) //set the tip_percentage variable
+        
+        calculate()
+    }
+    
+    
+    @IBAction func secondStepper(_ sender: UIStepper) {
+        print(sender.value) //print statements are for debugging
+        let formattedValue = String(format: "%.0f", sender.value) //format the number with no decimals
+        partySizeLabel.text = "\(formattedValue)" //set the label
+        party_size = Int(sender.value) // set the party_size variable
+        
+        calculate()
+    }
+    
+   
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true) //retracts the keyboard when we touch outside of the textfield
+    }
+    
+    func displayError(_ message: String, textField: UITextField) {
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert) //create an alertController object
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true) { //present the user the alert
+            textField.text = ""
+        }
+    }
+    
+    func calculate(){
+        
         let tempTipPercent: Double = Double(tip_percentage) / 100 //It's not a percentage, it's a decimal (ei. 0.2)
         print("temptip amount: \(tempTipPercent)") //print statements are for debugging
         
@@ -65,35 +105,6 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate 
         formattedValue = formatter.string(from: forYourShare)!
         yourShareLabel.text = "\(formattedValue)" // set the label formated
 
-    }
-    
-    @IBAction func firstStepper(_ sender: UIStepper) {
-        print(sender.value) //print statements are for debugging
-        let formattedValue = String(format: "%.0f", sender.value) //format the number with no decimals
-        tipLabel.text = "\(formattedValue)%" //set the label
-        tip_percentage = Int(sender.value) //set the tip_percentage variable
-    }
-    
-    
-    @IBAction func secondStepper(_ sender: UIStepper) {
-        print(sender.value) //print statements are for debugging
-        let formattedValue = String(format: "%.0f", sender.value) //format the number with no decimals
-        partySizeLabel.text = "\(formattedValue)" //set the label
-        party_size = Int(sender.value) // set the party_size variable
-    }
-    
-   
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true) //retracts the keyboard when we touch outside of the textfield
-    }
-    
-    func displayError(_ message: String, textField: UITextField) {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert) //create an alertController object
-        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true) { //present the user the alert
-            textField.text = ""
-        }
     }
     
 }
