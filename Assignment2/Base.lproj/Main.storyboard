@@ -82,13 +82,13 @@
                                     <action selector="calcButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Gn-8Y-WNb"/>
                                 </connections>
                             </button>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="40" stepValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="CTy-y8-pAe">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="20" maximumValue="40" stepValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="CTy-y8-pAe">
                                 <rect key="frame" x="10" y="130" width="94" height="32"/>
                                 <connections>
                                     <action selector="firstStepper:" destination="BYZ-38-t0r" eventType="valueChanged" id="SzR-qG-Oa7"/>
                                 </connections>
                             </stepper>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Cgz-dg-R06">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Cgz-dg-R06">
                                 <rect key="frame" x="10" y="220" width="94" height="32"/>
                                 <connections>
                                     <action selector="secondStepper:" destination="BYZ-38-t0r" eventType="valueChanged" id="5nH-wP-UwB"/>

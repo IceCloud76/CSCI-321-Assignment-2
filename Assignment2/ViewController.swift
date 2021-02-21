@@ -39,11 +39,15 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate 
     
     @IBAction func firstStepper(_ sender: UIStepper) {
         print(sender.value)
+        let formattedValue = String(format: "%.0f", sender.value)
+        tipLabel.text = "\(formattedValue)%"
     }
     
     
     @IBAction func secondStepper(_ sender: UIStepper) {
         print(sender.value)
+        let formattedValue = String(format: "%.0f", sender.value)
+        partySizeLabel.text = "\(formattedValue)"
     }
     
     
