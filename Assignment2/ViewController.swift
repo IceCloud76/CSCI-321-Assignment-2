@@ -33,14 +33,41 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate 
             displayError("Please enter a valid first number", textField: myTextField)
             return
         }
+        print("Bill amount: \(firstNumber)")
         
-        print(firstNumber)
+        bill_amount = CGFloat(firstNumber)
+        let tempTipPercent: Double = Double(tip_percentage) / 100 //It's not a percentage, it's a decimal (ei. 0.2)
+        print("temptip amount: \(tempTipPercent)")
+        
+        let tipAmount = (bill_amount * CGFloat(tempTipPercent))
+        print("tip amount: \(tipAmount)")
+        
+        let totalBill = tipAmount + bill_amount
+        print("Total Bill amount: \(totalBill)")
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.maximumFractionDigits = 2
+        
+        let forTotalBill = NSNumber(value: Double(totalBill))
+        let formattedValue = formatter.string(from: forTotalBill)!
+        totalBillLabel.text = "\(formattedValue)"
+        
+        let yourShare = totalBill / CGFloat(party_size)
+        print("party_Size: \(party_size)")
+        print("let yourShare: \(yourShare)")
+        let forYourShare = NSNumber(value: Double(yourShare))
+        let formattedValue2 = formatter.string(from: forYourShare)!
+        yourShareLabel.text = "\(formattedValue2)"
+        
+        
     }
     
     @IBAction func firstStepper(_ sender: UIStepper) {
         print(sender.value)
         let formattedValue = String(format: "%.0f", sender.value)
         tipLabel.text = "\(formattedValue)%"
+        tip_percentage = Int(sender.value)
     }
     
     
@@ -48,11 +75,12 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate 
         print(sender.value)
         let formattedValue = String(format: "%.0f", sender.value)
         partySizeLabel.text = "\(formattedValue)"
+        party_size = Int(sender.value)
     }
     
    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
+        view.endEditing(true) //retracts the keyboard when we touch outside of the textfield
     }
     
     func displayError(_ message: String, textField: UITextField) {
