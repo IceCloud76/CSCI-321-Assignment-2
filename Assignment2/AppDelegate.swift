@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Assignment2
 //
-//  Created by Eric Kirchman on 2/17/21.
+//  Created by Eric Kirchman Z1864126 Dan Hafford Z1863444     on 2/17/21.
 //
 
 import UIKit
