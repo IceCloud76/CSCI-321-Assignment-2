@@ -17,9 +17,9 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate 
     
     
     
-    var bill_amount: CGFloat = CGFloat(0.00)
-    var tip_percentage: Int = 20
-    var party_size: Int = 1
+    var bill_amount: CGFloat = CGFloat(0.00) //the initial amount input by the user
+    var tip_percentage: Int = 20 // the amount the user wants to tip. In percentage (whole numbers)
+    var party_size: Int = 1 // party size (whole numbers. Min: 1 Max: 10)
     
     
     override func viewDidLoad() {
@@ -33,11 +33,16 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate 
             displayError("Please enter a valid first number", textField: myTextField)
             return
         }
-        print("Bill amount: \(firstNumber)")
+        if (firstNumber < 0){ //check if number is negative. If so, throw up an error
+            displayError("Please enter a valid first number", textField: myTextField)
+            return
+        }
+        
+        print("Bill amount: \(firstNumber)") //print statements are for debugging
         
         bill_amount = CGFloat(firstNumber)
         let tempTipPercent: Double = Double(tip_percentage) / 100 //It's not a percentage, it's a decimal (ei. 0.2)
-        print("temptip amount: \(tempTipPercent)")
+        print("temptip amount: \(tempTipPercent)") //print statements are for debugging
         
         let tipAmount = (bill_amount * CGFloat(tempTipPercent))
         print("tip amount: \(tipAmount)")
@@ -50,15 +55,15 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate 
         formatter.maximumFractionDigits = 2
         
         let forTotalBill = NSNumber(value: Double(totalBill))
-        let formattedValue = formatter.string(from: forTotalBill)!
+        var formattedValue = formatter.string(from: forTotalBill)!
         totalBillLabel.text = "\(formattedValue)"
         
         let yourShare = totalBill / CGFloat(party_size)
         print("party_Size: \(party_size)")
         print("let yourShare: \(yourShare)")
         let forYourShare = NSNumber(value: Double(yourShare))
-        let formattedValue2 = formatter.string(from: forYourShare)!
-        yourShareLabel.text = "\(formattedValue2)"
+        formattedValue = formatter.string(from: forYourShare)!
+        yourShareLabel.text = "\(formattedValue)"
         
         
     }
