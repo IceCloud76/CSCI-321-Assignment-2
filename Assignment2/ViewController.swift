@@ -30,11 +30,11 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate 
     @IBAction func calcButtonPressed(_ sender: UIButton) {
             guard let firstNumberString = myTextField.text, !firstNumberString.isEmpty, let firstNumber = Double(firstNumberString) else {
             // print("Error - invalid first number")
-            displayError("Please enter a valid first number", textField: myTextField)
+            displayError("Please enter a valid first number", textField: myTextField) // Pop up an error for the user
             return
         }
         if (firstNumber < 0){ //check if number is negative. If so, throw up an error
-            displayError("Please enter a valid first number", textField: myTextField)
+            displayError("Please enter a valid first number", textField: myTextField) // Pop up an error for the user
             return
         }
         
@@ -45,42 +45,41 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate 
         print("temptip amount: \(tempTipPercent)") //print statements are for debugging
         
         let tipAmount = (bill_amount * CGFloat(tempTipPercent))
-        print("tip amount: \(tipAmount)")
+        print("tip amount: \(tipAmount)") //print statements are for debugging
         
         let totalBill = tipAmount + bill_amount
-        print("Total Bill amount: \(totalBill)")
+        print("Total Bill amount: \(totalBill)") //print statements are for debugging
         
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.maximumFractionDigits = 2
+        let formatter = NumberFormatter() //create a number formater object
+        formatter.numberStyle = .currency // mark it as currency
+        formatter.maximumFractionDigits = 2 // maximum number of digits after decimal
         
-        let forTotalBill = NSNumber(value: Double(totalBill))
+        let forTotalBill = NSNumber(value: Double(totalBill)) //create a variable using number formater
         var formattedValue = formatter.string(from: forTotalBill)!
-        totalBillLabel.text = "\(formattedValue)"
+        totalBillLabel.text = "\(formattedValue)" //set the label formated
         
         let yourShare = totalBill / CGFloat(party_size)
-        print("party_Size: \(party_size)")
-        print("let yourShare: \(yourShare)")
+        print("party_Size: \(party_size)") //print statements are for debugging
+        print("let yourShare: \(yourShare)") //print statements are for debugging
         let forYourShare = NSNumber(value: Double(yourShare))
         formattedValue = formatter.string(from: forYourShare)!
-        yourShareLabel.text = "\(formattedValue)"
-        
-        
+        yourShareLabel.text = "\(formattedValue)" // set the label formated
+
     }
     
     @IBAction func firstStepper(_ sender: UIStepper) {
-        print(sender.value)
-        let formattedValue = String(format: "%.0f", sender.value)
-        tipLabel.text = "\(formattedValue)%"
-        tip_percentage = Int(sender.value)
+        print(sender.value) //print statements are for debugging
+        let formattedValue = String(format: "%.0f", sender.value) //format the number with no decimals
+        tipLabel.text = "\(formattedValue)%" //set the label
+        tip_percentage = Int(sender.value) //set the tip_percentage variable
     }
     
     
     @IBAction func secondStepper(_ sender: UIStepper) {
-        print(sender.value)
-        let formattedValue = String(format: "%.0f", sender.value)
-        partySizeLabel.text = "\(formattedValue)"
-        party_size = Int(sender.value)
+        print(sender.value) //print statements are for debugging
+        let formattedValue = String(format: "%.0f", sender.value) //format the number with no decimals
+        partySizeLabel.text = "\(formattedValue)" //set the label
+        party_size = Int(sender.value) // set the party_size variable
     }
     
    
@@ -89,10 +88,10 @@ class ViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate 
     }
     
     func displayError(_ message: String, textField: UITextField) {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert) //create an alertController object
         let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
-        present(alertController, animated: true) {
+        present(alertController, animated: true) { //present the user the alert
             textField.text = ""
         }
     }
